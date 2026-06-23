@@ -59,11 +59,9 @@
     padding:4px;
     box-shadow:0 0 60px rgba(99,102,241,.4);
   }
-  .avatar div{
+  .avatar img{
     width:100%;height:100%;border-radius:50%;
-    background:var(--bg2);
-    display:flex;align-items:center;justify-content:center;
-    font-size:3.5rem;font-weight:800;color:var(--accent2);
+    object-fit:cover;display:block;
   }
   .hero-text{flex:1;min-width:280px}
   .hero-text .role{color:var(--accent2);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.85rem;margin-bottom:10px}
@@ -90,10 +88,9 @@
     transition:.3s;display:flex;flex-direction:column;
   }
   .proj-card:hover{transform:translateY(-8px);border-color:rgba(99,102,241,.5);box-shadow:0 20px 40px rgba(0,0,0,.4)}
-  .proj-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
-  .pi1{background:linear-gradient(135deg,#7c3aed,#ec4899)}
-  .pi2{background:linear-gradient(135deg,#0ea5e9,#22d3ee)}
-  .pi3{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+  .proj-img{height:200px;overflow:hidden}
+  .proj-img img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}
+  .proj-card:hover .proj-img img{transform:scale(1.06)}
   .proj-body{padding:22px;flex:1;display:flex;flex-direction:column}
   .proj-body h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
   .proj-body p{color:var(--muted);font-size:.9rem;flex:1}
@@ -164,7 +161,10 @@
 
   <!-- HERO -->
   <header>
-    <div class="avatar"><div>JA</div></div>
+    <!-- Cambia "foto.jpg" por el nombre de tu foto subida al repositorio -->
+    <div class="avatar">
+      <img src="https://picsum.photos/400/400" alt="J. Alberto Lahera">
+    </div>
     <div class="hero-text">
       <div class="role">Soporte Técnico &amp; Developer</div>
       <h1>J. Alberto <span>Lahera</span></h1>
@@ -180,12 +180,15 @@
   <section id="proyectos">
     <div class="reveal">
       <div class="sec-title">Proyectos <span>Unity Mobile</span></div>
-      <div class="sec-sub">Algunos de los juegos y aplicaciones que he desarrollado.</div>
+      <div class="sec-sub">Mis juegos publicados en Google Play.</div>
     </div>
     <div class="projects">
 
       <div class="proj-card reveal">
-        <div class="proj-img pi1">🎮</div>
+        <!-- Cambia "keyshi.jpg" por el nombre de la imagen de tu juego -->
+        <div class="proj-img">
+          <img src="https://picsum.photos/600/400?random=1" alt="Keyshi Bros">
+        </div>
         <div class="proj-body">
           <h3>Keyshi Bros</h3>
           <p>Juego mobile desarrollado en Unity con C#. Incluye creación de ambientes y props en Blender, shaders personalizados y gestión de audio.</p>
@@ -193,14 +196,17 @@
             <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Blender</span>
           </div>
           <div class="proj-links">
-            <a href="#" target="_blank">▶ Google Play</a>
-            <a href="#" target="_blank">⌥ GitHub</a>
+            <!-- Pon aquí la URL de Google Play -->
+            <a href="PON_AQUI_GOOGLE_PLAY_KEYSHI" target="_blank">▶ Google Play</a>
           </div>
         </div>
       </div>
 
       <div class="proj-card reveal">
-        <div class="proj-img pi2">🏎️</div>
+        <!-- Cambia "monkeykong.jpg" por el nombre de la imagen de tu juego -->
+        <div class="proj-img">
+          <img src="https://picsum.photos/600/400?random=2" alt="Monkey Kong Racing">
+        </div>
         <div class="proj-body">
           <h3>Monkey Kong Racing</h3>
           <p>Juego de carreras para móviles en Unity. Físicas de vehículos, shaders para mejoras visuales y backend con MySQL y Nest.</p>
@@ -208,22 +214,8 @@
             <span class="tag">Unity</span><span class="tag">Shaders</span><span class="tag">NestJS</span>
           </div>
           <div class="proj-links">
-            <a href="#" target="_blank">▶ Google Play</a>
-            <a href="#" target="_blank">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-card reveal">
-        <div class="proj-img pi3">🃏</div>
-        <div class="proj-body">
-          <h3>Flash Questions App</h3>
-          <p>Aplicación de tarjetas educativas desarrollada en React. Interfaces visuales, sistema de tarjetas y preguntas interactivas.</p>
-          <div class="tags">
-            <span class="tag">React</span><span class="tag">JS</span><span class="tag">UI/UX</span>
-          </div>
-          <div class="proj-links">
-            <a href="#" target="_blank">⌥ GitHub</a>
+            <!-- Pon aquí la URL de Google Play -->
+            <a href="PON_AQUI_GOOGLE_PLAY_MONKEYKONG" target="_blank">▶ Google Play</a>
           </div>
         </div>
       </div>
@@ -328,8 +320,10 @@
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:juanlahera99@gmail.com">✉ Email</a>
         <a class="btn btn-ghost" href="tel:+34615965561">☎ +34 615 965 561</a>
-        <a class="btn btn-ghost" href="#" target="_blank">⌥ GitHub</a>
-        <a class="btn btn-ghost" href="#" target="_blank">in LinkedIn</a>
+        <!-- Reemplaza por la URL de tu perfil de LinkedIn -->
+        <a class="btn btn-ghost" href="PON_AQUI_TU_LINKEDIN" target="_blank">in LinkedIn</a>
+        <!-- Reemplaza por la URL de tu perfil de Indeed -->
+        <a class="btn btn-ghost" href="PON_AQUI_TU_INDEED" target="_blank">◆ Indeed</a>
       </div>
     </div>
   </section>
@@ -337,7 +331,7 @@
 </div>
 
 <footer>
-  © 2026 J. Alberto Lahera · Hecho con ♥ y código
+  © 2026 J. Alberto Lahera
 </footer>
 
 <script>
