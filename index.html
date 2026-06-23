@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J. Alberto Lahera — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0f14;
+    --bg2:#151821;
+    --card:#1a1e2a;
+    --accent:#6366f1;
+    --accent2:#22d3ee;
+    --text:#e7e9ee;
+    --muted:#9aa3b2;
+    --border:rgba(255,255,255,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+
+  /* Animated background blobs */
+  .bg-glow{position:fixed;border-radius:50%;filter:blur(120px);opacity:.25;z-index:0;pointer-events:none}
+  .glow1{width:500px;height:500px;background:var(--accent);top:-150px;left:-150px;animation:float1 14s ease-in-out infinite}
+  .glow2{width:450px;height:450px;background:var(--accent2);bottom:-150px;right:-150px;animation:float2 16s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,60px)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,-50px)}}
+
+  .wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(13,15,20,.7);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:800;font-size:1.1rem;letter-spacing:.5px}
+  .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:28px;font-size:.92rem;font-weight:500}
+  .nav-links a{color:var(--muted);transition:.25s}
+  .nav-links a:hover{color:var(--text)}
+  .burger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* HERO */
+  header{padding:90px 0 70px;display:flex;align-items:center;gap:50px;flex-wrap:wrap}
+  .avatar{
+    width:180px;height:180px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    padding:4px;
+    box-shadow:0 0 60px rgba(99,102,241,.4);
+  }
+  .avatar div{
+    width:100%;height:100%;border-radius:50%;
+    background:var(--bg2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:3.5rem;font-weight:800;color:var(--accent2);
+  }
+  .hero-text{flex:1;min-width:280px}
+  .hero-text .role{color:var(--accent2);font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.85rem;margin-bottom:10px}
+  .hero-text h1{font-size:3.4rem;font-weight:900;line-height:1.05;margin-bottom:16px}
+  .hero-text h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero-text p{color:var(--muted);max-width:560px;font-size:1.02rem}
+  .hero-btns{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:12px 24px;border-radius:12px;font-weight:600;font-size:.92rem;transition:.25s;cursor:pointer;border:1px solid var(--border)}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(99,102,241,.4)}
+  .btn-ghost{background:transparent;color:var(--text)}
+  .btn-ghost:hover{background:var(--card);transform:translateY(-3px)}
+
+  /* SECTIONS */
+  section{padding:60px 0}
+  .sec-title{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+  .sec-title span{color:var(--accent2)}
+  .sec-sub{color:var(--muted);margin-bottom:40px;font-size:.95rem}
+
+  /* PROJECTS */
+  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .proj-card{
+    background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;
+    transition:.3s;display:flex;flex-direction:column;
+  }
+  .proj-card:hover{transform:translateY(-8px);border-color:rgba(99,102,241,.5);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+  .proj-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+  .pi1{background:linear-gradient(135deg,#7c3aed,#ec4899)}
+  .pi2{background:linear-gradient(135deg,#0ea5e9,#22d3ee)}
+  .pi3{background:linear-gradient(135deg,#f59e0b,#ef4444)}
+  .proj-body{padding:22px;flex:1;display:flex;flex-direction:column}
+  .proj-body h3{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+  .proj-body p{color:var(--muted);font-size:.9rem;flex:1}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+  .tag{font-size:.72rem;padding:5px 11px;border-radius:20px;background:rgba(99,102,241,.15);color:#a5b4fc;font-weight:600}
+  .proj-links{display:flex;gap:14px;margin-top:6px;font-size:.85rem;font-weight:600}
+  .proj-links a{color:var(--accent2);transition:.2s}
+  .proj-links a:hover{opacity:.7}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent2))}
+  .tl-item{position:relative;margin-bottom:34px}
+  .tl-item::before{content:'';position:absolute;left:-30px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--accent2)}
+  .tl-date{font-size:.8rem;color:var(--accent2);font-weight:600}
+  .tl-item h3{font-size:1.15rem;font-weight:700;margin:4px 0 2px}
+  .tl-company{color:var(--muted);font-size:.9rem;font-weight:500;margin-bottom:10px}
+  .tl-item ul{list-style:none;color:var(--muted);font-size:.9rem}
+  .tl-item li{padding-left:18px;position:relative;margin-bottom:4px}
+  .tl-item li::before{content:'▹';position:absolute;left:0;color:var(--accent)}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .skill-box{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+  .skill-box h4{font-size:1rem;margin-bottom:16px;color:var(--accent2)}
+  .chip{display:inline-block;font-size:.82rem;padding:7px 14px;margin:4px 4px 0 0;border-radius:10px;background:var(--bg2);border:1px solid var(--border);transition:.2s}
+  .chip:hover{border-color:var(--accent);color:var(--accent2)}
+
+  /* CONTACT */
+  .contact-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:50px 40px;text-align:center}
+  .contact-box h2{font-size:2rem;font-weight:800;margin-bottom:12px}
+  .contact-box p{color:var(--muted);margin-bottom:26px}
+  .contact-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(30px);transition:.7s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  @media(max-width:720px){
+    .nav-links{display:none}
+    .burger{display:block}
+    .nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:20px 24px;gap:18px;border-bottom:1px solid var(--border)}
+    .hero-text h1{font-size:2.4rem}
+    header{padding:50px 0 40px}
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow glow1"></div>
+<div class="bg-glow glow2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">J.A<span>Lahera</span></div>
+    <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#skills">Skills</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header>
+    <div class="avatar"><div>JA</div></div>
+    <div class="hero-text">
+      <div class="role">Soporte Técnico &amp; Developer</div>
+      <h1>J. Alberto <span>Lahera</span></h1>
+      <p>Ingeniero Informático graduado en la Universidad de Ciencias Informáticas de La Habana. Desarrollador Full Stack y de videojuegos mobile en Unity, con sólidas competencias técnicas y compromiso con el aprendizaje continuo.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn btn-ghost" href="#contacto">Contáctame</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <div class="reveal">
+      <div class="sec-title">Proyectos <span>Unity Mobile</span></div>
+      <div class="sec-sub">Algunos de los juegos y aplicaciones que he desarrollado.</div>
+    </div>
+    <div class="projects">
+
+      <div class="proj-card reveal">
+        <div class="proj-img pi1">🎮</div>
+        <div class="proj-body">
+          <h3>Keyshi Bros</h3>
+          <p>Juego mobile desarrollado en Unity con C#. Incluye creación de ambientes y props en Blender, shaders personalizados y gestión de audio.</p>
+          <div class="tags">
+            <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Blender</span>
+          </div>
+          <div class="proj-links">
+            <a href="#" target="_blank">▶ Google Play</a>
+            <a href="#" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img pi2">🏎️</div>
+        <div class="proj-body">
+          <h3>Monkey Kong Racing</h3>
+          <p>Juego de carreras para móviles en Unity. Físicas de vehículos, shaders para mejoras visuales y backend con MySQL y Nest.</p>
+          <div class="tags">
+            <span class="tag">Unity</span><span class="tag">Shaders</span><span class="tag">NestJS</span>
+          </div>
+          <div class="proj-links">
+            <a href="#" target="_blank">▶ Google Play</a>
+            <a href="#" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-img pi3">🃏</div>
+        <div class="proj-body">
+          <h3>Flash Questions App</h3>
+          <p>Aplicación de tarjetas educativas desarrollada en React. Interfaces visuales, sistema de tarjetas y preguntas interactivas.</p>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">JS</span><span class="tag">UI/UX</span>
+          </div>
+          <div class="proj-links">
+            <a href="#" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="reveal">
+      <div class="sec-title">Experiencia <span>Laboral</span></div>
+      <div class="sec-sub">Mi recorrido profesional.</div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2024 — Actualidad</div>
+        <h3>Full Stack Developer</h3>
+        <div class="tl-company">Zero Gravity · USA</div>
+        <ul>
+          <li>Desarrollo de videojuegos con C# usando Unity (Keyshi Bros &amp; Monkey Kong Racing).</li>
+          <li>Creación de ambientes y props con Blender.</li>
+          <li>Definición de audios y creación de shaders para mejoras visuales.</li>
+          <li>Gestión de bases de datos y backend con MySQL y Nest, microservicios con RabbitMQ.</li>
+          <li>Manejo de versiones y gestión de la cuenta de Google Play.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2023 — 2024</div>
+        <h3>Desarrollador Junior</h3>
+        <div class="tl-company">Lexawise Group · USA</div>
+        <ul>
+          <li>Frontend con React JS.</li>
+          <li>Gestión con Jira &amp; GitHub (tareas y control de versiones).</li>
+          <li>Desarrollo de tarjetas, flash questions e interfaces visuales.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2021 — 2023</div>
+        <h3>Técnico de Redes &amp; Desarrollador Junior</h3>
+        <div class="tl-company">UCI · Cuba</div>
+        <ul>
+          <li>Frontend con Vue JS, Svelte y JS Vanilla (sitios web de la universidad).</li>
+          <li>Administración de servidores.</li>
+          <li>Configuración de redes (IP, DNS, DHCP, máscaras de subred y gateways).</li>
+          <li>Configuración de VPN en estaciones de trabajo.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2020 — 2021</div>
+        <h3>Técnico de Informática</h3>
+        <div class="tl-company">UCI · Cuba</div>
+        <ul>
+          <li>Mantenimiento de equipos informáticos y administración de sistemas.</li>
+          <li>Moderación de redes y recopilación de datos de usuario.</li>
+          <li>Soporte a oficinas: creación de cuentas y actualizaciones de sistemas.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="reveal">
+      <div class="sec-title">Skills &amp; <span>Herramientas</span></div>
+      <div class="sec-sub">Tecnologías con las que trabajo.</div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-box reveal">
+        <h4>🎮 Game Dev &amp; 3D</h4>
+        <span class="chip">Unity</span><span class="chip">UE5</span><span class="chip">C#</span>
+        <span class="chip">Blender</span><span class="chip">Maya</span><span class="chip">Photoshop</span><span class="chip">Shaders</span>
+      </div>
+      <div class="skill-box reveal">
+        <h4>💻 Desarrollo Web</h4>
+        <span class="chip">React JS</span><span class="chip">Vue JS</span><span class="chip">Svelte</span>
+        <span class="chip">JS Vanilla</span><span class="chip">NestJS</span><span class="chip">Spring</span>
+        <span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">RabbitMQ</span>
+      </div>
+      <div class="skill-box reveal">
+        <h4>🛠️ Sistemas &amp; Soporte</h4>
+        <span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">macOS</span>
+        <span class="chip">Redes</span><span class="chip">AnyDesk</span><span class="chip">TeamViewer</span>
+        <span class="chip">Jira</span><span class="chip">Zendesk</span><span class="chip">ServiceNow</span>
+      </div>
+      <div class="skill-box reveal">
+        <h4>🌐 Idiomas</h4>
+        <span class="chip">Español — Nativo</span><span class="chip">Inglés — C1 Avanzado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contact-box reveal">
+      <h2>¿Trabajamos juntos?</h2>
+      <p>Estoy abierto a nuevas oportunidades. ¡Hablemos!</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:juanlahera99@gmail.com">✉ Email</a>
+        <a class="btn btn-ghost" href="tel:+34615965561">☎ +34 615 965 561</a>
+        <a class="btn btn-ghost" href="#" target="_blank">⌥ GitHub</a>
+        <a class="btn btn-ghost" href="#" target="_blank">in LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 J. Alberto Lahera · Hecho con ♥ y código
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Close mobile menu on click
+  document.querySelectorAll('#navlinks a').forEach(a=>{
+    a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
