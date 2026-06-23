@@ -46,9 +46,17 @@
   .nav-inner{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
   .logo{font-weight:800;font-size:1.1rem;letter-spacing:.5px}
   .logo span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-right{display:flex;align-items:center;gap:24px}
   .nav-links{display:flex;gap:28px;font-size:.92rem;font-weight:500}
   .nav-links a{color:var(--muted);transition:.25s}
   .nav-links a:hover{color:var(--text)}
+  .lang-btn{
+    display:flex;align-items:center;gap:6px;
+    background:var(--card);border:1px solid var(--border);
+    color:var(--text);padding:7px 13px;border-radius:10px;
+    font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:.25s;
+  }
+  .lang-btn:hover{border-color:var(--accent);color:var(--accent2)}
   .burger{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
 
   /* HERO */
@@ -147,12 +155,15 @@
 <nav>
   <div class="nav-inner">
     <div class="logo">J.A<span>Lahera</span></div>
-    <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
-    <div class="nav-links" id="navlinks">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#skills">Skills</a>
-      <a href="#contacto">Contacto</a>
+    <div class="nav-right">
+      <div class="nav-links" id="navlinks">
+        <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+        <a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a>
+        <a href="#skills" data-es="Skills" data-en="Skills">Skills</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      </div>
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">🌐 <span id="langLabel">EN</span></button>
+      <button class="burger" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
     </div>
   </div>
 </nav>
@@ -163,15 +174,16 @@
   <header>
     <!-- Cambia "foto.jpg" por el nombre de tu foto subida al repositorio -->
     <div class="avatar">
-      <img src="https://picsum.photos/400/400" alt="J. Alberto Lahera">
+      <img src="https://foto.jpg" alt="J. Alberto Lahera">
     </div>
     <div class="hero-text">
-      <div class="role">Soporte Técnico &amp; Developer</div>
+      <div class="role" data-es="Soporte Técnico &amp; Developer" data-en="Tech Support &amp; Developer">Soporte Técnico &amp; Developer</div>
       <h1>J. Alberto <span>Lahera</span></h1>
-      <p>Ingeniero Informático graduado en la Universidad de Ciencias Informáticas de La Habana. Desarrollador Full Stack y de videojuegos mobile en Unity, con sólidas competencias técnicas y compromiso con el aprendizaje continuo.</p>
+      <p data-es="Ingeniero Informático graduado en la Universidad de Ciencias Informáticas de La Habana. Desarrollador Full Stack y de videojuegos mobile en Unity, con sólidas competencias técnicas y compromiso con el aprendizaje continuo."
+         data-en="Computer Engineer graduated from the University of Informatics Sciences in Havana. Full Stack developer and Unity mobile game developer, with strong technical skills and a commitment to continuous learning.">Ingeniero Informático graduado en la Universidad de Ciencias Informáticas de La Habana. Desarrollador Full Stack y de videojuegos mobile en Unity, con sólidas competencias técnicas y compromiso con el aprendizaje continuo.</p>
       <div class="hero-btns">
-        <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
-        <a class="btn btn-ghost" href="#contacto">Contáctame</a>
+        <a class="btn btn-primary" href="#proyectos" data-es="Ver proyectos" data-en="View projects">Ver proyectos</a>
+        <a class="btn btn-ghost" href="#contacto" data-es="Contáctame" data-en="Contact me">Contáctame</a>
       </div>
     </div>
   </header>
@@ -179,19 +191,20 @@
   <!-- PROYECTOS -->
   <section id="proyectos">
     <div class="reveal">
-      <div class="sec-title">Proyectos <span>Unity Mobile</span></div>
-      <div class="sec-sub">Mis juegos publicados en Google Play.</div>
+      <div class="sec-title" data-es="Proyectos <span>Unity Mobile</span>" data-en="Unity Mobile <span>Projects</span>">Proyectos <span>Unity Mobile</span></div>
+      <div class="sec-sub" data-es="Mis juegos publicados en Google Play." data-en="My games published on Google Play.">Mis juegos publicados en Google Play.</div>
     </div>
     <div class="projects">
 
       <div class="proj-card reveal">
         <!-- Cambia "keyshi.jpg" por el nombre de la imagen de tu juego -->
         <div class="proj-img">
-          <img src="https://picsum.photos/600/400?random=1" alt="Keyshi Bros">
+          <img src="https://keyshi.jpg" alt="Keyshi Bros">
         </div>
         <div class="proj-body">
           <h3>Keyshi Bros</h3>
-          <p>Juego mobile desarrollado en Unity con C#. Incluye creación de ambientes y props en Blender, shaders personalizados y gestión de audio.</p>
+          <p data-es="Juego mobile desarrollado en Unity con C#. Incluye creación de ambientes y props en Blender, shaders personalizados y gestión de audio."
+             data-en="Mobile game developed in Unity with C#. Includes environment and prop creation in Blender, custom shaders and audio management.">Juego mobile desarrollado en Unity con C#. Incluye creación de ambientes y props en Blender, shaders personalizados y gestión de audio.</p>
           <div class="tags">
             <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Blender</span>
           </div>
@@ -205,11 +218,12 @@
       <div class="proj-card reveal">
         <!-- Cambia "monkeykong.jpg" por el nombre de la imagen de tu juego -->
         <div class="proj-img">
-          <img src="https://picsum.photos/600/400?random=2" alt="Monkey Kong Racing">
+          <img src="https://monkeykong.jpg/600/400?random=2" alt="Monkey Kong Racing">
         </div>
         <div class="proj-body">
           <h3>Monkey Kong Racing</h3>
-          <p>Juego de carreras para móviles en Unity. Físicas de vehículos, shaders para mejoras visuales y backend con MySQL y Nest.</p>
+          <p data-es="Juego de carreras para móviles en Unity. Físicas de vehículos, shaders para mejoras visuales y backend con MySQL y Nest."
+             data-en="Mobile racing game in Unity. Vehicle physics, shaders for visual enhancements and backend with MySQL and Nest.">Juego de carreras para móviles en Unity. Físicas de vehículos, shaders para mejoras visuales y backend con MySQL y Nest.</p>
           <div class="tags">
             <span class="tag">Unity</span><span class="tag">Shaders</span><span class="tag">NestJS</span>
           </div>
@@ -226,55 +240,68 @@
   <!-- EXPERIENCIA -->
   <section id="experiencia">
     <div class="reveal">
-      <div class="sec-title">Experiencia <span>Laboral</span></div>
-      <div class="sec-sub">Mi recorrido profesional.</div>
+      <div class="sec-title" data-es="Experiencia <span>Laboral</span>" data-en="Work <span>Experience</span>">Experiencia <span>Laboral</span></div>
+      <div class="sec-sub" data-es="Mi recorrido profesional." data-en="My professional journey.">Mi recorrido profesional.</div>
     </div>
     <div class="timeline">
 
       <div class="tl-item reveal">
-        <div class="tl-date">2024 — Actualidad</div>
+        <div class="tl-date" data-es="2024 — Actualidad" data-en="2024 — Present">2024 — Actualidad</div>
         <h3>Full Stack Developer</h3>
         <div class="tl-company">Zero Gravity · USA</div>
         <ul>
-          <li>Desarrollo de videojuegos con C# usando Unity (Keyshi Bros &amp; Monkey Kong Racing).</li>
-          <li>Creación de ambientes y props con Blender.</li>
-          <li>Definición de audios y creación de shaders para mejoras visuales.</li>
-          <li>Gestión de bases de datos y backend con MySQL y Nest, microservicios con RabbitMQ.</li>
-          <li>Manejo de versiones y gestión de la cuenta de Google Play.</li>
+          <li data-es="Desarrollo de videojuegos con C# usando Unity (Keyshi Bros &amp; Monkey Kong Racing)."
+              data-en="Game development with C# using Unity (Keyshi Bros &amp; Monkey Kong Racing).">Desarrollo de videojuegos con C# usando Unity (Keyshi Bros &amp; Monkey Kong Racing).</li>
+          <li data-es="Creación de ambientes y props con Blender."
+              data-en="Creation of environments and props with Blender.">Creación de ambientes y props con Blender.</li>
+          <li data-es="Definición de audios y creación de shaders para mejoras visuales."
+              data-en="Audio definition and shader creation for visual enhancements.">Definición de audios y creación de shaders para mejoras visuales.</li>
+          <li data-es="Gestión de bases de datos y backend con MySQL y Nest, microservicios con RabbitMQ."
+              data-en="Database and backend management with MySQL and Nest, microservices with RabbitMQ.">Gestión de bases de datos y backend con MySQL y Nest, microservicios con RabbitMQ.</li>
+          <li data-es="Manejo de versiones y gestión de la cuenta de Google Play."
+              data-en="Version control and management of the Google Play account.">Manejo de versiones y gestión de la cuenta de Google Play.</li>
         </ul>
       </div>
 
       <div class="tl-item reveal">
         <div class="tl-date">2023 — 2024</div>
-        <h3>Desarrollador Junior</h3>
+        <h3 data-es="Desarrollador Junior" data-en="Junior Developer">Desarrollador Junior</h3>
         <div class="tl-company">Lexawise Group · USA</div>
         <ul>
-          <li>Frontend con React JS.</li>
-          <li>Gestión con Jira &amp; GitHub (tareas y control de versiones).</li>
-          <li>Desarrollo de tarjetas, flash questions e interfaces visuales.</li>
+          <li data-es="Frontend con React JS." data-en="Frontend with React JS.">Frontend con React JS.</li>
+          <li data-es="Gestión con Jira &amp; GitHub (tareas y control de versiones)."
+              data-en="Management with Jira &amp; GitHub (tasks and version control).">Gestión con Jira &amp; GitHub (tareas y control de versiones).</li>
+          <li data-es="Desarrollo de tarjetas, flash questions e interfaces visuales."
+              data-en="Development of cards, flash questions and visual interfaces.">Desarrollo de tarjetas, flash questions e interfaces visuales.</li>
         </ul>
       </div>
 
       <div class="tl-item reveal">
         <div class="tl-date">2021 — 2023</div>
-        <h3>Técnico de Redes &amp; Desarrollador Junior</h3>
+        <h3 data-es="Técnico de Redes &amp; Desarrollador Junior" data-en="Network Technician &amp; Junior Developer">Técnico de Redes &amp; Desarrollador Junior</h3>
         <div class="tl-company">UCI · Cuba</div>
         <ul>
-          <li>Frontend con Vue JS, Svelte y JS Vanilla (sitios web de la universidad).</li>
-          <li>Administración de servidores.</li>
-          <li>Configuración de redes (IP, DNS, DHCP, máscaras de subred y gateways).</li>
-          <li>Configuración de VPN en estaciones de trabajo.</li>
+          <li data-es="Frontend con Vue JS, Svelte y JS Vanilla (sitios web de la universidad)."
+              data-en="Frontend with Vue JS, Svelte and Vanilla JS (university websites).">Frontend con Vue JS, Svelte y JS Vanilla (sitios web de la universidad).</li>
+          <li data-es="Administración de servidores." data-en="Server administration.">Administración de servidores.</li>
+          <li data-es="Configuración de redes (IP, DNS, DHCP, máscaras de subred y gateways)."
+              data-en="Network configuration (IP, DNS, DHCP, subnet masks and gateways).">Configuración de redes (IP, DNS, DHCP, máscaras de subred y gateways).</li>
+          <li data-es="Configuración de VPN en estaciones de trabajo."
+              data-en="VPN configuration on workstations.">Configuración de VPN en estaciones de trabajo.</li>
         </ul>
       </div>
 
       <div class="tl-item reveal">
         <div class="tl-date">2020 — 2021</div>
-        <h3>Técnico de Informática</h3>
+        <h3 data-es="Técnico de Informática" data-en="IT Technician">Técnico de Informática</h3>
         <div class="tl-company">UCI · Cuba</div>
         <ul>
-          <li>Mantenimiento de equipos informáticos y administración de sistemas.</li>
-          <li>Moderación de redes y recopilación de datos de usuario.</li>
-          <li>Soporte a oficinas: creación de cuentas y actualizaciones de sistemas.</li>
+          <li data-es="Mantenimiento de equipos informáticos y administración de sistemas."
+              data-en="Maintenance of computer equipment and systems administration.">Mantenimiento de equipos informáticos y administración de sistemas.</li>
+          <li data-es="Moderación de redes y recopilación de datos de usuario."
+              data-en="Network moderation and user data collection.">Moderación de redes y recopilación de datos de usuario.</li>
+          <li data-es="Soporte a oficinas: creación de cuentas y actualizaciones de sistemas."
+              data-en="Office support: account creation and system updates.">Soporte a oficinas: creación de cuentas y actualizaciones de sistemas.</li>
         </ul>
       </div>
 
@@ -284,30 +311,30 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="reveal">
-      <div class="sec-title">Skills &amp; <span>Herramientas</span></div>
-      <div class="sec-sub">Tecnologías con las que trabajo.</div>
+      <div class="sec-title" data-es="Skills &amp; <span>Herramientas</span>" data-en="Skills &amp; <span>Tools</span>">Skills &amp; <span>Herramientas</span></div>
+      <div class="sec-sub" data-es="Tecnologías con las que trabajo." data-en="Technologies I work with.">Tecnologías con las que trabajo.</div>
     </div>
     <div class="skills-grid">
       <div class="skill-box reveal">
-        <h4>🎮 Game Dev &amp; 3D</h4>
+        <h4 data-es="🎮 Game Dev &amp; 3D" data-en="🎮 Game Dev &amp; 3D">🎮 Game Dev &amp; 3D</h4>
         <span class="chip">Unity</span><span class="chip">UE5</span><span class="chip">C#</span>
         <span class="chip">Blender</span><span class="chip">Maya</span><span class="chip">Photoshop</span><span class="chip">Shaders</span>
       </div>
       <div class="skill-box reveal">
-        <h4>💻 Desarrollo Web</h4>
+        <h4 data-es="💻 Desarrollo Web" data-en="💻 Web Development">💻 Desarrollo Web</h4>
         <span class="chip">React JS</span><span class="chip">Vue JS</span><span class="chip">Svelte</span>
         <span class="chip">JS Vanilla</span><span class="chip">NestJS</span><span class="chip">Spring</span>
         <span class="chip">SQL</span><span class="chip">NoSQL</span><span class="chip">RabbitMQ</span>
       </div>
       <div class="skill-box reveal">
-        <h4>🛠️ Sistemas &amp; Soporte</h4>
+        <h4 data-es="🛠️ Sistemas &amp; Soporte" data-en="🛠️ Systems &amp; Support">🛠️ Sistemas &amp; Soporte</h4>
         <span class="chip">Windows</span><span class="chip">Linux</span><span class="chip">macOS</span>
-        <span class="chip">Redes</span><span class="chip">AnyDesk</span><span class="chip">TeamViewer</span>
+        <span class="chip" data-es="Redes" data-en="Networks">Redes</span><span class="chip">AnyDesk</span><span class="chip">TeamViewer</span>
         <span class="chip">Jira</span><span class="chip">Zendesk</span><span class="chip">ServiceNow</span>
       </div>
       <div class="skill-box reveal">
-        <h4>🌐 Idiomas</h4>
-        <span class="chip">Español — Nativo</span><span class="chip">Inglés — C1 Avanzado</span>
+        <h4 data-es="🌐 Idiomas" data-en="🌐 Languages">🌐 Idiomas</h4>
+        <span class="chip" data-es="Español — Nativo" data-en="Spanish — Native">Español — Nativo</span><span class="chip" data-es="Inglés — C1 Avanzado" data-en="English — C1 Advanced">Inglés — C1 Avanzado</span>
       </div>
     </div>
   </section>
@@ -315,8 +342,8 @@
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="contact-box reveal">
-      <h2>¿Trabajamos juntos?</h2>
-      <p>Estoy abierto a nuevas oportunidades. ¡Hablemos!</p>
+      <h2 data-es="¿Trabajamos juntos?" data-en="Let's work together?">¿Trabajamos juntos?</h2>
+      <p data-es="Estoy abierto a nuevas oportunidades. ¡Hablemos!" data-en="I'm open to new opportunities. Let's talk!">Estoy abierto a nuevas oportunidades. ¡Hablemos!</p>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:juanlahera99@gmail.com">✉ Email</a>
         <a class="btn btn-ghost" href="tel:+34615965561">☎ +34 615 965 561</a>
@@ -345,6 +372,22 @@
   document.querySelectorAll('#navlinks a').forEach(a=>{
     a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open'));
   });
+
+  // Language toggle
+  let currentLang = 'es';
+  function applyLang(lang){
+    document.querySelectorAll('[data-es]').forEach(el=>{
+      const txt = el.getAttribute('data-' + lang);
+      if(txt !== null) el.innerHTML = txt;
+    });
+    document.documentElement.lang = lang;
+    // El botón muestra el idioma al que se puede cambiar
+    document.getElementById('langLabel').textContent = (lang === 'es') ? 'EN' : 'ES';
+  }
+  function toggleLang(){
+    currentLang = (currentLang === 'es') ? 'en' : 'es';
+    applyLang(currentLang);
+  }
 </script>
 </body>
 </html>
